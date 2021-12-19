@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type='text/javascript' src='http://code.jquery.com/jquery-latest.js'></script>
+    <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+    <div class="spawn-wrapper">
+        <div class="map-wrapper">
+            <div class="spawn-markers">
+                <i class="Sbtn markerBtn mrpd tooltipped" data-position="top" data-tooltip="MRPD" data-location="mrpd" data-info="Mission Row Police Department" ><img class="gpsmarker" src="./marker.png"></i>
+                <i class="Sbtn markerBtn mirror tooltipped" data-position="top" data-tooltip="Mirror Park" data-location="mirror" data-info="Mirror Park" ><img class="gpsmarker" src="./marker.png"></i>
+                <i class="Sbtn markerBtn hospital tooltipped" data-position="top" data-tooltip="Hospital" data-location="hospital" data-info="Hospital" ><img class="gpsmarker" src="./marker.png"></i>
+            </div>
+            <button type="button" class="Sbtn lastLocation" data-location="last" data-info="Your last location" ><i class="fas fa-map-marker-alt" ></i> Last Location</button>
+        </div>
+    </div>
+    <div class="spawn-box">
+        <div class="box-details">
+            <span class="spawn-name"></span>
+            <div class="spawn-buttons">
+                <button class="spawn-btn green spawnBtn" onclick="Spawn(this)" ><i class="fas fa-map-marked-alt"></i>Spawn</button>
+                <button class="spawn-btn red" onclick="GoBack()"><i class="fas fa-exclamation-circle"></i>Back</button>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
