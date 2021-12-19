@@ -1,4 +1,5 @@
 local display = false
+local spawnSelected = false
 
 RegisterNetEvent('SpawnPlayer')
 AddEventHandler('SpawnPlayer', function() 
@@ -21,28 +22,23 @@ RegisterNUICallback("main", function(data)
 end)
 
 RegisterNUICallback("legion", function()
-    SetEntityCoords(PlayerPedId(), 190.98, -850.67, 31.13)
-    SetDisplay(false)
+    CheckAndTeleport(vector3(190.98, -850.67, 31.13))
 end)
 
 RegisterNUICallback("pier", function()
-    SetEntityCoords(PlayerPedId(), -1607.64, -971.87, 13.02)
-    SetDisplay(false)
+    CheckAndTeleport(vector3(-1607.64, -971.87, 13.02))
 end)
 
 RegisterNUICallback("arena", function()
-    SetEntityCoords(PlayerPedId(), -270.14, -1919.85, 29.95)
-    SetDisplay(false)
+    CheckAndTeleport(vector3(-270.14, -1919.85, 29.95))
 end)
 
 RegisterNUICallback("mirror", function()
-    SetEntityCoords(PlayerPedId(), 1125.26, -645.88, 56.72)
-    SetDisplay(false)
+    CheckAndTeleport(vector3(1125.26, -645.88, 56.72))
 end)
 
 RegisterNUICallback("sandy", function()
     SetEntityCoords(PlayerPedId(), 1782.05, 3334.44, 41.13)
-    SetDisplay(false)
 end)
 
 RegisterNUICallback("error", function(data)
@@ -71,6 +67,14 @@ Citizen.CreateThread(function()
         DisableControlAction(0, 106, display) 
     end
 end)
+
+function CheckAndTeleport(coords)
+    if not spawnSelected then -- If it's the first time the player choose his spawn (prevents NUI abuse)
+        SetEntityCoords(PlayerPedId(), coords)
+        SetDisplay(false)
+        spawnSelected = true -- set is as selected
+    end
+end
 
 function chat(str, color)
     TriggerEvent("chat:addMessage",
