@@ -1,8 +1,5 @@
 local display = false
 
-
-
-
 RegisterNetEvent('SpawnPlayer')
 AddEventHandler('SpawnPlayer', function() 
     Wait(1500)
@@ -13,15 +10,12 @@ AddEventHandler('SpawnPlayer', function()
     DoScreenFadeIn(250)
     SetDisplay(not display)  
 end)
-  
-  
 
 RegisterNUICallback("exit", function(data)
     local ped = PlayerPedId()
     FreezeEntityPosition(ped, false)
     SetDisplay(false)
 end)
-
 
 RegisterNUICallback("main", function(data)
     SetDisplay(false)
@@ -38,16 +32,19 @@ RegisterNUICallback("pier", function()
     SetEntityCoords(ped, -1607.64, -971.87, 13.02)
     SetDisplay(false)
 end)
+
 RegisterNUICallback("arena", function()
     local ped = PlayerPedId()
     SetEntityCoords(ped, -270.14, -1919.85, 29.95)
     SetDisplay(false)
 end)
+
 RegisterNUICallback("mirror", function()
     local ped = PlayerPedId()
     SetEntityCoords(ped, 1125.26, -645.88, 56.72)
     SetDisplay(false)
 end)
+
 RegisterNUICallback("sandy", function()
     local ped = PlayerPedId()
     SetEntityCoords(ped, 1782.05, 3334.44, 41.13)
@@ -71,7 +68,7 @@ end
 Citizen.CreateThread(function()
     while display do
         Citizen.Wait(0)
-        
+            
         DisableControlAction(0, 1, display)
         DisableControlAction(0, 2, display) 
         DisableControlAction(0, 142, display) 
@@ -82,12 +79,10 @@ Citizen.CreateThread(function()
 end)
 
 function chat(str, color)
-    TriggerEvent(
-        'chat:addMessage',
-        {
-            color = color,
-            multiline = true,
-            args = {str}
-        }
-    )
+    TriggerEvent("chat:addMessage",
+    {
+        color = color,
+        multiline = true,
+        args = {str}
+    })
 end
